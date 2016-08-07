@@ -1,0 +1,10 @@
+framework module AppFriendsCore {
+  umbrella header "AppFriendsCore.h"
+
+  export *
+  module * { export * }
+}
+
+module AppFriendsCore.Swift {
+    header "AppFriendsCore-Swift.h"
+}
