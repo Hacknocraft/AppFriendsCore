@@ -3,7 +3,7 @@
 //  AppFriendsCore
 //
 //  Created by HAO WANG on 8/6/16.
-//  Copyright © 2016 Bilal Kheir. All rights reserved.
+//  Copyright © 2016 Hacknocraft. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

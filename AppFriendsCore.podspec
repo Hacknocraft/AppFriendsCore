@@ -21,16 +21,12 @@ s.homepage = "http://appfriends.me"
 
 # 6 - framework location
 s.vendored_frameworks = "AppFriendsCore.framework"
-
-# For example,
-# s.source = { :git => "https://github.com/JRG-Developer/RWPickFlavor.git", :tag => "#{s.version}"}
+s.source = { :git => "https://github.com/laeroah/AppFriendsCoreFramework.git", :tag => "0.1"}
 
 # 7
 s.dependency 'Alamofire'
+s.dependency 'JSONWebToken'
+s.dependency 'EZSwiftExtensions'
+s.dependency 'CoreStore'
 
-# 8
-# s.source_files = "RWPickFlavor/**/*.{swift}"
-
-# 9
-# s.resources = "RWPickFlavor/**/*.{png,jpeg,jpg,storyboard,xib}"
 end
