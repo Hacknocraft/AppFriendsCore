@@ -92,12 +92,60 @@ typedef int swift_int4  __attribute__((__ext_vector_type__(4)));
 # endif
 #endif
 #if defined(__has_feature) && __has_feature(modules)
-@import CoreData;
 @import ObjectiveC;
+@import CoreData;
 #endif
 
 #pragma clang diagnostic ignored "-Wproperty-attribute-mismatch"
 #pragma clang diagnostic ignored "-Wduplicate-method-arg"
+
+SWIFT_CLASS("_TtC14AppFriendsCore14HCSDKConstants")
+@interface HCSDKConstants : NSObject
++ (NSString * _Nonnull)kUserName;
++ (NSString * _Nonnull)kUserAvatar;
++ (NSString * _Nonnull)kUserID;
++ (NSString * _Nonnull)kUserEmail;
++ (NSString * _Nonnull)kUserRealName;
++ (NSString * _Nonnull)kCustomData;
++ (NSString * _Nonnull)kDialogTypeGroup;
++ (NSString * _Nonnull)kDialogTypeIndividual;
++ (NSString * _Nonnull)kDialogTypeChannel;
++ (NSString * _Nonnull)kDialogTypeSystem;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class NSError;
+@protocol HCSDKCoreSyncDelegate;
+
+SWIFT_CLASS("_TtC14AppFriendsCore9HCSDKCore")
+@interface HCSDKCore : NSObject
++ (HCSDKCore * _Nonnull)sharedInstance;
+@property (nonatomic, readonly, copy) NSString * _Nonnull applicationKey;
+@property (nonatomic, readonly, copy) NSString * _Nonnull applicationSecret;
+@property (nonatomic, weak) id <HCSDKCoreSyncDelegate> _Nullable syncDelegate;
+@property (nonatomic, readonly, copy) NSString * _Nullable appFriendsUserAccessToken;
+- (void)initializeWithKey:(NSString * _Nonnull)applicationKey secret:(NSString * _Nonnull)applicationSecret completion:(void (^ _Nullable)(BOOL success, NSError * _Nullable error))completion;
+- (void)enableDebug;
+- (BOOL)isLogin;
+- (void)loginWithUserInfo:(NSDictionary<NSString *, id> * _Nullable)params completion:(void (^ _Nullable)(id _Nullable response, NSError * _Nullable error))completion;
+- (void)startRequestWithHttpMethod:(NSString * _Nonnull)method path:(NSString * _Nonnull)requestPath parameters:(NSDictionary<NSString *, id> * _Nullable)params completion:(void (^ _Nullable)(id _Nullable response, NSError * _Nullable error))completion;
+- (NSString * _Nullable)currentUserID;
+- (NSString * _Nullable)currentUserName;
+- (void)sendMessage:(NSDictionary<NSString *, id> * _Nonnull)messageJSON dialogID:(NSString * _Nonnull)dialogID completion:(void (^ _Nullable)(id _Nullable response, NSError * _Nullable error))completion;
+- (void)sendMessage:(NSDictionary<NSString *, id> * _Nonnull)messageJSON userID:(NSString * _Nonnull)userID completion:(void (^ _Nullable)(id _Nullable response, NSError * _Nullable error))completion;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_PROTOCOL("_TtP14AppFriendsCore21HCSDKCoreSyncDelegate_")
+@protocol HCSDKCoreSyncDelegate
+
+/// This is the callback when new messages are received
+///
+/// \param messages array of messages of JSON objects
+- (void)messagesReceived:(NSArray<NSDictionary<NSString *, id> *> * _Nonnull)messages;
+@end
+
 @class NSManagedObjectContext;
 @class NSEntityDescription;
 
@@ -114,46 +162,5 @@ SWIFT_CLASS("_TtC14AppFriendsCore9_HCDialog")
 @property (nonatomic, copy) NSString * _Nullable title;
 @property (nonatomic, copy) NSString * _Nullable type;
 @end
-
-
-SWIFT_CLASS_NAMED("HCDialog")
-@interface HCDialog : _HCDialog
-- (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-SWIFT_CLASS("_TtC14AppFriendsCore14HCSDKConstants")
-@interface HCSDKConstants : NSObject
-+ (NSString * _Nonnull)kUserName;
-+ (NSString * _Nonnull)kUserAvatar;
-+ (NSString * _Nonnull)kUserID;
-+ (NSString * _Nonnull)kUserEmail;
-+ (NSString * _Nonnull)kUserRealName;
-+ (NSString * _Nonnull)kCustomData;
-+ (NSString * _Nonnull)kDialogTypeGroup;
-+ (NSString * _Nonnull)kDialogTypeIndividual;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-@class NSError;
-
-SWIFT_CLASS("_TtC14AppFriendsCore9HCSDKCore")
-@interface HCSDKCore : NSObject
-+ (HCSDKCore * _Nonnull)sharedInstance;
-@property (nonatomic, readonly, copy) NSString * _Nonnull applicationKey;
-@property (nonatomic, readonly, copy) NSString * _Nonnull applicationSecret;
-@property (nonatomic, readonly, copy) NSString * _Nullable appFriendsUserAccessToken;
-- (void)initializeWithKey:(NSString * _Nonnull)applicationKey secret:(NSString * _Nonnull)applicationSecret completion:(void (^ _Nullable)(BOOL success, NSError * _Nullable error))completion;
-- (void)enableDebug;
-- (BOOL)isLogin;
-- (void)loginWithUserInfo:(NSDictionary<NSString *, id> * _Nullable)params completion:(void (^ _Nullable)(id _Nullable response, NSError * _Nullable error))completion;
-- (void)startRequestWithHttpMethod:(NSString * _Nonnull)method path:(NSString * _Nonnull)requestPath parameters:(NSDictionary<NSString *, id> * _Nullable)params completion:(void (^ _Nullable)(id _Nullable response, NSError * _Nullable error))completion;
-- (NSString * _Nullable)currentUserID;
-- (NSString * _Nullable)currentUserName;
-- (void)sendMessage:(NSDictionary<NSString *, id> * _Nonnull)messageJSON dialogID:(NSString * _Nonnull)dialogID completion:(void (^ _Nullable)(id _Nullable response, NSError * _Nullable error))completion;
-- (void)sendMessage:(NSDictionary<NSString *, id> * _Nonnull)messageJSON userID:(NSString * _Nonnull)userID completion:(void (^ _Nullable)(id _Nullable response, NSError * _Nullable error))completion;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
 
 #pragma clang diagnostic pop
