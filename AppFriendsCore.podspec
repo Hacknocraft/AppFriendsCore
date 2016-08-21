@@ -28,5 +28,6 @@ s.dependency 'Alamofire'
 s.dependency 'JSONWebToken'
 s.dependency 'EZSwiftExtensions'
 s.dependency 'CoreStore'
+s.dependency 'Cloudinary'
 
 end

@@ -115,6 +115,8 @@ SWIFT_CLASS("_TtC14AppFriendsCore14HCSDKConstants")
 @end
 
 @class NSError;
+@class NSDictionary;
+@class UIImage;
 @protocol HCSDKCoreSyncDelegate;
 
 SWIFT_CLASS("_TtC14AppFriendsCore9HCSDKCore")
@@ -131,8 +133,9 @@ SWIFT_CLASS("_TtC14AppFriendsCore9HCSDKCore")
 - (void)startRequestWithHttpMethod:(NSString * _Nonnull)method path:(NSString * _Nonnull)requestPath parameters:(NSDictionary<NSString *, id> * _Nullable)params completion:(void (^ _Nullable)(id _Nullable response, NSError * _Nullable error))completion;
 - (NSString * _Nullable)currentUserID;
 - (NSString * _Nullable)currentUserName;
-- (void)sendMessage:(NSDictionary<NSString *, id> * _Nonnull)messageJSON dialogID:(NSString * _Nonnull)dialogID completion:(void (^ _Nullable)(id _Nullable response, NSError * _Nullable error))completion;
-- (void)sendMessage:(NSDictionary<NSString *, id> * _Nonnull)messageJSON userID:(NSString * _Nonnull)userID completion:(void (^ _Nullable)(id _Nullable response, NSError * _Nullable error))completion;
+- (void)sendMessage:(NSDictionary * _Nonnull)messageJSON dialogID:(NSString * _Nonnull)dialogID completion:(void (^ _Nullable)(id _Nullable response, NSError * _Nullable error))completion;
+- (void)sendMessage:(NSDictionary * _Nonnull)messageJSON userID:(NSString * _Nonnull)userID completion:(void (^ _Nullable)(id _Nullable response, NSError * _Nullable error))completion;
+- (void)uploadImage:(UIImage * _Nonnull)image completion:(void (^ _Nonnull)(NSString * _Nullable imagePublicID, NSError * _Nullable error))completion progress:(void (^ _Nonnull)(NSInteger percentage))progress;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
