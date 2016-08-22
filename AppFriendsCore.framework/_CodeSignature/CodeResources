@@ -14,43 +14,43 @@
 		</data>
 		<key>Frameworks/libswiftContacts.dylib</key>
 		<data>
-		tVy+ZOG2jmZ69vANOpOGrWQbKPE=
+		KG7OrB836B/xh+1coUTZlVlobgA=
 		</data>
 		<key>Frameworks/libswiftCore.dylib</key>
 		<data>
-		04c/cyp6rXNh7xzgnzqeZXMcKuM=
+		Kdi4PuBY1XW9sV3Yi98MDCefGvE=
 		</data>
 		<key>Frameworks/libswiftCoreData.dylib</key>
 		<data>
-		vQ2Ave32sVzXOAZmVZoPmTKOgRM=
+		ZpsGcGAHs87FcmtAJdR71q5cBSw=
 		</data>
 		<key>Frameworks/libswiftCoreGraphics.dylib</key>
 		<data>
-		75Clj1/3G+cAjGAkRcuALSua3UI=
+		99oA5AElLCO63vkfSO+TFRo6jTA=
 		</data>
 		<key>Frameworks/libswiftCoreImage.dylib</key>
 		<data>
-		P9OGjvhdywtFcTwRq2kGhVlCPaY=
+		W44nYo5ubSQzrVwq0Ze3E087kxE=
 		</data>
 		<key>Frameworks/libswiftDarwin.dylib</key>
 		<data>
-		xhGQDYqdy94jsH9rYAxUizj+6nU=
+		hCcA48cRhd/3asMX57KkoCG61Jc=
 		</data>
 		<key>Frameworks/libswiftDispatch.dylib</key>
 		<data>
-		dKmzgecFdXPRm7MA7VnEasFJBDE=
+		8XGwLaE05t05yne/8tSIShv9Y/U=
 		</data>
 		<key>Frameworks/libswiftFoundation.dylib</key>
 		<data>
-		gAiX6mr+rw5EJbTDBw0XBHXWF5c=
+		wWH1+ipPudUvLtmo0xgkSd4dyTY=
 		</data>
 		<key>Frameworks/libswiftObjectiveC.dylib</key>
 		<data>
-		fZ8m6DehH41a/KQMB5uubxjoA+Y=
+		+hm5/n42ojKiVtcbsvVX40mas/8=
 		</data>
 		<key>Frameworks/libswiftUIKit.dylib</key>
 		<data>
-		8DfeT7Y2gsoTTZKteAoeMwjOXow=
+		bA3UCxgb0wgytrkWMfSghAzejV4=
 		</data>
 		<key>Headers/AppFriendsCore-Swift.h</key>
 		<data>
@@ -70,7 +70,7 @@
 		</data>
 		<key>Modules/AppFriendsCore.swiftmodule/arm.swiftmodule</key>
 		<data>
-		OffSMechGKwCWoLGbHsi+FHhF08=
+		hR824gDLibRjSZQnVbb5KIvyb4g=
 		</data>
 		<key>Modules/AppFriendsCore.swiftmodule/arm64.swiftdoc</key>
 		<data>
@@ -78,7 +78,7 @@
 		</data>
 		<key>Modules/AppFriendsCore.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		coXv6agSrnlbxceN6wn37b0jQ38=
+		L7LcIixw+GQgN1HBndDyK9mdVyo=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -113,110 +113,110 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			tVy+ZOG2jmZ69vANOpOGrWQbKPE=
+			KG7OrB836B/xh+1coUTZlVlobgA=
 			</data>
 			<key>hash2</key>
 			<data>
-			ilPqntpclP5agNOk2STrrw2QRjD0bPEZuncO9/0qX44=
+			7W+pT+kl1ssmpiJTTcSrvQQ7Vf2DAoV6FKW5V7zOKfY=
 			</data>
 		</dict>
 		<key>Frameworks/libswiftCore.dylib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			04c/cyp6rXNh7xzgnzqeZXMcKuM=
+			Kdi4PuBY1XW9sV3Yi98MDCefGvE=
 			</data>
 			<key>hash2</key>
 			<data>
-			3PCHMEqvVamQX7oAPpbTz0NusK7JbrxKehI2goAzCpY=
+			xq8VVcCl2VrUjRUf3/bc0cc7VfMrbX/rtumG3zlrbxk=
 			</data>
 		</dict>
 		<key>Frameworks/libswiftCoreData.dylib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			vQ2Ave32sVzXOAZmVZoPmTKOgRM=
+			ZpsGcGAHs87FcmtAJdR71q5cBSw=
 			</data>
 			<key>hash2</key>
 			<data>
-			eJNyVo5Lj3TXUq8H8KuRLKWRLjAuZmTghJryYjQLdU0=
+			/RAQjIBoJNsmsV6LO3OfhXiZ3vf812W7dDnvp7WMV5U=
 			</data>
 		</dict>
 		<key>Frameworks/libswiftCoreGraphics.dylib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			75Clj1/3G+cAjGAkRcuALSua3UI=
+			99oA5AElLCO63vkfSO+TFRo6jTA=
 			</data>
 			<key>hash2</key>
 			<data>
-			f5X80Hp8jL09UwHWrSAXqTJLwoS+WsbIBMQgeNzaNjI=
+			cwy0fEh8OYg0oXFr/ZEZS9Rj0NG3euu3uYMV+UfpDbk=
 			</data>
 		</dict>
 		<key>Frameworks/libswiftCoreImage.dylib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			P9OGjvhdywtFcTwRq2kGhVlCPaY=
+			W44nYo5ubSQzrVwq0Ze3E087kxE=
 			</data>
 			<key>hash2</key>
 			<data>
-			lznNkbQLyfmxa/Vt2tWvRP4eJd4Pdbz4f9GoIryGj38=
+			mO3bpDfCTEs2n+y1T/53oLHwS7Z5tNJyDFdYs6eqX3U=
 			</data>
 		</dict>
 		<key>Frameworks/libswiftDarwin.dylib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			xhGQDYqdy94jsH9rYAxUizj+6nU=
+			hCcA48cRhd/3asMX57KkoCG61Jc=
 			</data>
 			<key>hash2</key>
 			<data>
-			l4g9m5Is47KhLRGPwfKiBCec0DIgZ0ztDAe39b0kY4M=
+			KUT8W61mx9IbINnlQ+O3S5aViX++jYOEgKD62i1+qRA=
 			</data>
 		</dict>
 		<key>Frameworks/libswiftDispatch.dylib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			dKmzgecFdXPRm7MA7VnEasFJBDE=
+			8XGwLaE05t05yne/8tSIShv9Y/U=
 			</data>
 			<key>hash2</key>
 			<data>
-			kjgaMVMCsc4+yWOt9K6i6Ut03VfCkxdLpyJY9QPuYoQ=
+			DAFv8lWTCZgmkGhZYxhLqKFLnOCMvORxp0XYM8nZsUA=
 			</data>
 		</dict>
 		<key>Frameworks/libswiftFoundation.dylib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			gAiX6mr+rw5EJbTDBw0XBHXWF5c=
+			wWH1+ipPudUvLtmo0xgkSd4dyTY=
 			</data>
 			<key>hash2</key>
 			<data>
-			jHaWPLlZnpMfwAT0lA7Juw5VHCx5iYvhU68gf53J0cA=
+			mUaCLpAt32vTS2DiyJoRyX3FZoOfp2xYUAJW8ftM2y8=
 			</data>
 		</dict>
 		<key>Frameworks/libswiftObjectiveC.dylib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			fZ8m6DehH41a/KQMB5uubxjoA+Y=
+			+hm5/n42ojKiVtcbsvVX40mas/8=
 			</data>
 			<key>hash2</key>
 			<data>
-			Lb+4aMS+U1yanZT9wIi5FjB/gkyMUusTMiPkz7Mu8Xs=
+			GD03IO/EpRyAVNRAyz2/ujPNlenxtVMCK4qd+u6OhCI=
 			</data>
 		</dict>
 		<key>Frameworks/libswiftUIKit.dylib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			8DfeT7Y2gsoTTZKteAoeMwjOXow=
+			bA3UCxgb0wgytrkWMfSghAzejV4=
 			</data>
 			<key>hash2</key>
 			<data>
-			1svZzf4OFnmuMtwVrkx7uCOiBX9FLtULCgCkxHHx1JQ=
+			R8LVbQxCDIPjaP6/fkmjRcFINArjLIb+GnQXfpDNEBU=
 			</data>
 		</dict>
 		<key>Headers/AppFriendsCore-Swift.h</key>
@@ -256,11 +256,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			OffSMechGKwCWoLGbHsi+FHhF08=
+			hR824gDLibRjSZQnVbb5KIvyb4g=
 			</data>
 			<key>hash2</key>
 			<data>
-			1uvxTa9KZ0vtiaIhHn15VdJO6HzHkqeE856Gn2Xw+yc=
+			OPtcqxMs+JmMpoSIA2TddkOd5DWGolPFt2JpP5fh1vw=
 			</data>
 		</dict>
 		<key>Modules/AppFriendsCore.swiftmodule/arm64.swiftdoc</key>
@@ -278,11 +278,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			coXv6agSrnlbxceN6wn37b0jQ38=
+			L7LcIixw+GQgN1HBndDyK9mdVyo=
 			</data>
 			<key>hash2</key>
 			<data>
-			Kv53d7cZrH9U2Q2pLT5GF9vUeg0p+ZTeOa7To0jeFr4=
+			PpgcNaV7LXdeyvhsJ/xmUugSA+VLaocnWRYazW9H9SM=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
