@@ -1,14 +1,14 @@
 Pod::Spec.new do |s|
 
 # 1
-s.platform = :ios
+s.platform = :ios, '8.0'
 s.ios.deployment_target = '8.0'
 s.name = "AppFriendsCore"
 s.summary = "Core SDK for AppFriends."
 s.requires_arc = true
 
 # 2
-s.version = "0.1.4"
+s.version = "0.1.5"
 
 # 3
 s.license = { :type => "MIT" }
