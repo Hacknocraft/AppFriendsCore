@@ -11,7 +11,7 @@ s.requires_arc = true
 s.version = "0.1.0"
 
 # 3
-s.license = { :type => "MIT", :file => "LICENSE" }
+s.license = { :type => "MIT" }
 
 # 4 - author
 s.author = { "Hao Wang" => "hao.wang@hacknocraft.com" }
