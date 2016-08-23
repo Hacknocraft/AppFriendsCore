@@ -107,10 +107,10 @@ SWIFT_CLASS("_TtC14AppFriendsCore14HCSDKConstants")
 + (NSString * _Nonnull)kUserEmail;
 + (NSString * _Nonnull)kUserRealName;
 + (NSString * _Nonnull)kCustomData;
-+ (NSString * _Nonnull)kDialogTypeGroup;
-+ (NSString * _Nonnull)kDialogTypeIndividual;
-+ (NSString * _Nonnull)kDialogTypeChannel;
-+ (NSString * _Nonnull)kDialogTypeSystem;
++ (NSString * _Nonnull)kMessageTypeGroup;
++ (NSString * _Nonnull)kMessageTypeIndividual;
++ (NSString * _Nonnull)kMessageTypeChannel;
++ (NSString * _Nonnull)kMessageTypeSystem;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
