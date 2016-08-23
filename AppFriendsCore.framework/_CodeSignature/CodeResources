@@ -54,7 +54,7 @@
 		</data>
 		<key>Headers/AppFriendsCore-Swift.h</key>
 		<data>
-		CFsjJW7mq0lqs6uqBETm35JyFaw=
+		2efXkZ/+g3Bl3IHOngUD8oqi7XI=
 		</data>
 		<key>Headers/AppFriendsCore.h</key>
 		<data>
@@ -70,7 +70,7 @@
 		</data>
 		<key>Modules/AppFriendsCore.swiftmodule/arm.swiftmodule</key>
 		<data>
-		Ud79HJJ2aV2hgPsyZMKCBCyb9Lk=
+		wtvgdmNDbQ5O5rDCs2adZll/Wd4=
 		</data>
 		<key>Modules/AppFriendsCore.swiftmodule/arm64.swiftdoc</key>
 		<data>
@@ -78,7 +78,7 @@
 		</data>
 		<key>Modules/AppFriendsCore.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		6Fh/PSvbXSL/0clJ3cLdp02NFFk=
+		iLuExzk3P9BllRRSGPNdKY6leEw=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -223,11 +223,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			CFsjJW7mq0lqs6uqBETm35JyFaw=
+			2efXkZ/+g3Bl3IHOngUD8oqi7XI=
 			</data>
 			<key>hash2</key>
 			<data>
-			nUK2E70IFZtBTc5YtfbcbuQ1ZD9GMqMPMkG3BKGDsTI=
+			ydaOE6xwApEC8UkUwZMRufmfJnVaXojlbRUpqdBK4T4=
 			</data>
 		</dict>
 		<key>Headers/AppFriendsCore.h</key>
@@ -256,11 +256,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Ud79HJJ2aV2hgPsyZMKCBCyb9Lk=
+			wtvgdmNDbQ5O5rDCs2adZll/Wd4=
 			</data>
 			<key>hash2</key>
 			<data>
-			Wt0E2u7m5MsdIwESt9Rrxkdhg93dmIAhu82QQLfEank=
+			za6mzYxNzxxpiRg4Vly4WBZYREfr3AIe33yuTo8O7eM=
 			</data>
 		</dict>
 		<key>Modules/AppFriendsCore.swiftmodule/arm64.swiftdoc</key>
@@ -278,11 +278,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			6Fh/PSvbXSL/0clJ3cLdp02NFFk=
+			iLuExzk3P9BllRRSGPNdKY6leEw=
 			</data>
 			<key>hash2</key>
 			<data>
-			FegKRALXwzgnY/5XkVxzRKvkiKWp3rH/BEGUT32syXE=
+			7AdhOOa9RttqP6cS3u1utZK0JJSfFeyIqTG1nxefqNo=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

@@ -130,6 +130,7 @@ SWIFT_CLASS("_TtC14AppFriendsCore9HCSDKCore")
 - (void)enableDebug;
 - (BOOL)isLogin;
 - (void)loginWithUserInfo:(NSDictionary<NSString *, id> * _Nullable)params completion:(void (^ _Nullable)(id _Nullable response, NSError * _Nullable error))completion;
+- (void)logout;
 - (void)startRequestWithHttpMethod:(NSString * _Nonnull)method path:(NSString * _Nonnull)requestPath parameters:(NSDictionary<NSString *, id> * _Nullable)params completion:(void (^ _Nullable)(id _Nullable response, NSError * _Nullable error))completion;
 - (NSString * _Nullable)currentUserID;
 - (NSString * _Nullable)currentUserName;
