@@ -39,7 +39,31 @@ Initialize AppFriends in Application Delegate `didFinishLaunchingWithOptions` me
 Constants can be accessed from `HCSDKConstants`
 
 ### Login
+To login the user, you can use:
+	
+	public func loginWithUserInfo(params: [String: AnyObject]?, completion: ((response: AnyObject?, error: NSError?) -> ())? = nil)
+	
+The first time user login, a new user will be created on AppFriends.	
+At login, you should provide the user ID, and a user name for this user. Example:
 
+	appFriendsCore.loginWithUserInfo([
+                    HCSDKConstants.kUserID: "random ID here",
+                    HCSDKConstants.kUserName: "User Name"
+                    ])
+                { (response, error) in
+                    
+                    if let err = error {
+                    	// handle error
+                    }
+                    
+                }
 
 ### Making Requests
+You can make direct API request to AppFriends by calling `startRequest` method on the singleton. For example, if you want to fetch the profile info of a user, you can do so by:
 
+	let appFriendsCore = HCSDKCore.sharedInstance
+        appFriendsCore.startRequest(httpMethod: "GET", path: "/users/\(userID)", parameters: nil) { (response, error) in
+            
+        }
+
+	
