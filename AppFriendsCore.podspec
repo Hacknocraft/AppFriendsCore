@@ -29,5 +29,6 @@ s.dependency 'JSONWebToken'
 s.dependency 'EZSwiftExtensions'
 s.dependency 'CoreStore'
 s.dependency 'Cloudinary'
+s.dependency 'Socket.IO-Client-Swift'
 
 end
