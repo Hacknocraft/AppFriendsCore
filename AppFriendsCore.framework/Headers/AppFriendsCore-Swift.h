@@ -124,6 +124,7 @@ SWIFT_CLASS("_TtC14AppFriendsCore9HCSDKCore")
 + (HCSDKCore * _Nonnull)sharedInstance;
 @property (nonatomic, readonly, copy) NSString * _Nonnull applicationKey;
 @property (nonatomic, readonly, copy) NSString * _Nonnull applicationSecret;
+@property (nonatomic, readonly) BOOL registeredPush;
 @property (nonatomic, weak) id <HCSDKCoreSyncDelegate> _Nullable syncDelegate;
 @property (nonatomic, readonly, copy) NSString * _Nullable appFriendsUserAccessToken;
 - (void)initializeWithKey:(NSString * _Nonnull)applicationKey secret:(NSString * _Nonnull)applicationSecret completion:(void (^ _Nullable)(BOOL success, NSError * _Nullable error))completion;
@@ -132,6 +133,7 @@ SWIFT_CLASS("_TtC14AppFriendsCore9HCSDKCore")
 - (void)loginWithUserInfo:(NSDictionary<NSString *, id> * _Nullable)params completion:(void (^ _Nullable)(id _Nullable response, NSError * _Nullable error))completion;
 - (void)logout;
 - (void)startRequestWithHttpMethod:(NSString * _Nonnull)method path:(NSString * _Nonnull)requestPath parameters:(NSDictionary<NSString *, id> * _Nullable)params completion:(void (^ _Nullable)(id _Nullable response, NSError * _Nullable error))completion;
+- (void)registerDeviceForPush:(NSString * _Nonnull)userID pushToken:(NSString * _Nonnull)pushToken;
 - (NSString * _Nullable)currentUserID;
 - (NSString * _Nullable)currentUserName;
 
