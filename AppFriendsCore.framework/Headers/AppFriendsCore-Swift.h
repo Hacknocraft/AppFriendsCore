@@ -134,6 +134,11 @@ SWIFT_CLASS("_TtC14AppFriendsCore9HCSDKCore")
 - (void)startRequestWithHttpMethod:(NSString * _Nonnull)method path:(NSString * _Nonnull)requestPath parameters:(NSDictionary<NSString *, id> * _Nullable)params completion:(void (^ _Nullable)(id _Nullable response, NSError * _Nullable error))completion;
 - (NSString * _Nullable)currentUserID;
 - (NSString * _Nullable)currentUserName;
+
+/// User's session in public channel expires in 3 minutes, so if you are in the channel, you should renew the session before it expires.
+///
+/// \param channelID the public channel's ID
+- (void)renewSessionForPublicChannel:(NSString * _Nonnull)channelID;
 - (void)sendMessage:(NSDictionary * _Nonnull)messageJSON dialogID:(NSString * _Nonnull)dialogID completion:(void (^ _Nullable)(id _Nullable response, NSError * _Nullable error))completion;
 - (void)sendMessage:(NSDictionary * _Nonnull)messageJSON userID:(NSString * _Nonnull)userID completion:(void (^ _Nullable)(id _Nullable response, NSError * _Nullable error))completion;
 - (void)sendMessage:(NSDictionary * _Nonnull)messageJSON channelID:(NSString * _Nonnull)channelID completion:(void (^ _Nullable)(id _Nullable response, NSError * _Nullable error))completion;
@@ -151,6 +156,13 @@ SWIFT_PROTOCOL("_TtP14AppFriendsCore21HCSDKCoreSyncDelegate_")
 ///
 /// \param messages array of messages of JSON objects
 - (void)messagesReceived:(NSArray<NSDictionary<NSString *, id> *> * _Nonnull)messages;
+
+/// This is asking to provide the last message you received in a certain channel. AppFriendsUI SDK takes care of this. However, if you decide to only use AppFriendsCore, you need to be responsible of implementing this method in the delegate class
+///
+/// \param channelID the ID of the channel
+///
+/// \returns  the ID of the last message you received in that channel
+- (NSString * _Nullable)lastReceivedMessageIDInChannel:(NSString * _Nonnull)channelID;
 @end
 
 @class NSManagedObjectContext;
