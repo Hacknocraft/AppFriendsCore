@@ -70,7 +70,7 @@
 		</data>
 		<key>Modules/AppFriendsCore.swiftmodule/arm.swiftmodule</key>
 		<data>
-		nDnIhh8+rFyW86pRFft5RPweixk=
+		JIdw5oGHeo45VhvPwShJB8akzCs=
 		</data>
 		<key>Modules/AppFriendsCore.swiftmodule/arm64.swiftdoc</key>
 		<data>
@@ -78,7 +78,7 @@
 		</data>
 		<key>Modules/AppFriendsCore.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		HgWP7t8JifuRi6YX2UapfIUhvhA=
+		sA+Uu1hgiIV3gupjpe6oLDVv//Q=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -256,11 +256,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			nDnIhh8+rFyW86pRFft5RPweixk=
+			JIdw5oGHeo45VhvPwShJB8akzCs=
 			</data>
 			<key>hash2</key>
 			<data>
-			3GQm0FSelYTUtohI/WNEBVS6274wM8ks/1oGXsIIOYs=
+			vCREWVB60f2H68bdCPoDFtZI3zt4Yj4nWKlUYaipgaM=
 			</data>
 		</dict>
 		<key>Modules/AppFriendsCore.swiftmodule/arm64.swiftdoc</key>
@@ -278,11 +278,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			HgWP7t8JifuRi6YX2UapfIUhvhA=
+			sA+Uu1hgiIV3gupjpe6oLDVv//Q=
 			</data>
 			<key>hash2</key>
 			<data>
-			EumEPpdcYiiaUsp6vvVb/xW+E/yY9yVJpm18WclRXgY=
+			SM02hklb6YHr4ktfx33EMXDcyqmwWn84k4sTg4n1D/o=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
