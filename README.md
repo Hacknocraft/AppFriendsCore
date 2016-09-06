@@ -16,7 +16,7 @@ Also, add `use_frameworks!` to the file. eg.
 	
 ## Initialization
 
-After logging into your admin panel, and created your application, you can find your `App ID` and `App Secret`. Then use them in the initialization.
+This is the first step to complete to start using AppFriends. After logging into your admin panel, and created your application, you can find your `App ID` and `App Secret`. Then use them in the initialization.
 
 Initialize AppFriends in Application Delegate `didFinishLaunchingWithOptions` method.
 
@@ -40,13 +40,13 @@ Constants can be accessed from `HCSDKConstants`
 
 ### Login
 To login the user, you can use:
-	
+
 	public func loginWithUserInfo(params: [String: AnyObject]?, completion: ((response: AnyObject?, error: NSError?) -> ())? = nil)
 	
 The first time user login, a new user will be created on AppFriends.	
 At login, you should provide the user ID, and a user name for this user. Example:
 
-	appFriendsCore.loginWithUserInfo([
+	HCSDKCore.sharedInstance.loginWithUserInfo([
                     HCSDKConstants.kUserID: "random ID here",
                     HCSDKConstants.kUserName: "User Name"
                     ])
@@ -57,13 +57,19 @@ At login, you should provide the user ID, and a user name for this user. Example
                     }
                     
                 }
+You can check if a user has logged in or not by calling
+
+	HCSDKCore.sharedInstance.isLogin()
+
 
 ### Making Requests
 You can make direct API request to AppFriends by calling `startRequest` method on the singleton. For example, if you want to fetch the profile info of a user, you can do so by:
 
-	let appFriendsCore = HCSDKCore.sharedInstance
-        appFriendsCore.startRequest(httpMethod: "GET", path: "/users/\(userID)", parameters: nil) { (response, error) in
-            
-        }
+```
+let appFriendsCore = HCSDKCore.sharedInstance
+appFriendsCore.startRequest(httpMethod: "GET", path: "/users/\(userID)", parameters: nil) { (response, error) in
+}
+```
 
-	
+## Advanced Usage
+Besides chat and social, you can take advantage of the core of AppFriends, which is content pushing, to implement some interesting Applications. 
