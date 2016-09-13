@@ -8,7 +8,7 @@ s.summary = "Core SDK for AppFriends."
 s.requires_arc = true
 
 # 2
-s.version = "0.1.25"
+s.version = "0.1.26"
 
 # 3
 s.license = { :type => "MIT" }
@@ -21,11 +21,11 @@ s.homepage = "http://appfriends.me"
 
 # 6 - framework location
 s.vendored_frameworks = "AppFriendsCore.framework"
-s.source = { :git => "https://github.com/laeroah/AppFriendsCoreFramework.git", :tag => "0.1.25"}
+s.source = { :git => "https://github.com/laeroah/AppFriendsCoreFramework.git", :tag => "0.1.26"}
 
 # 7
-s.dependency 'Alamofire'
-s.dependency 'JSONWebToken'
+s.dependency 'Alamofire', '~> 3.5.0'
+s.dependency 'JSONWebToken', '~> 1.5.0'
 s.dependency 'EZSwiftExtensions'
 s.dependency 'CoreStore'
 s.dependency 'Cloudinary'
