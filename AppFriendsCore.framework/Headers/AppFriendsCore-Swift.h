@@ -146,6 +146,14 @@ SWIFT_CLASS("_TtC14AppFriendsCore9HCSDKCore")
 - (void)sendMessage:(NSDictionary * _Nonnull)messageJSON userID:(NSString * _Nonnull)userID completion:(void (^ _Nullable)(id _Nullable response, NSError * _Nullable error))completion;
 - (void)sendMessage:(NSDictionary * _Nonnull)messageJSON channelID:(NSString * _Nonnull)channelID completion:(void (^ _Nullable)(id _Nullable response, NSError * _Nullable error))completion;
 - (void)uploadImage:(UIImage * _Nonnull)image completion:(void (^ _Nonnull)(NSString * _Nullable imagePublicID, NSError * _Nullable error))completion progress:(void (^ _Nonnull)(NSInteger percentage))progress;
+
+/// upload video to AppFriends CDN
+///
+/// \param videoData the video data. Max size is 10MB
+///
+/// \param completion completion block
+///
+/// \param progress progress block
 - (void)uploadVideo:(NSData * _Nonnull)videoData completion:(void (^ _Nonnull)(NSString * _Nullable imagePublicID, NSError * _Nullable error))completion progress:(void (^ _Nonnull)(NSInteger percentage))progress;
 - (NSString * _Null_unspecified)videoStreamingURL:(NSString * _Null_unspecified)publicID;
 - (NSString * _Null_unspecified)videoThumbnailURL:(NSString * _Null_unspecified)publicID;
