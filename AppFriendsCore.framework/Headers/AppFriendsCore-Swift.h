@@ -181,6 +181,7 @@ SWIFT_PROTOCOL("_TtP14AppFriendsCore21HCSDKCoreSyncDelegate_")
 
 @class NSManagedObjectContext;
 @class NSEntityDescription;
+@class NSNumber;
 
 SWIFT_CLASS("_TtC14AppFriendsCore9_HCDialog")
 @interface _HCDialog : NSManagedObject
@@ -191,6 +192,7 @@ SWIFT_CLASS("_TtC14AppFriendsCore9_HCDialog")
 @property (nonatomic, copy) NSString * _Nullable customData;
 @property (nonatomic, copy) NSString * _Nullable dialogID;
 @property (nonatomic, strong) id _Nullable members;
+@property (nonatomic, strong) NSNumber * _Nullable muted;
 @property (nonatomic, copy) NSString * _Nullable ownerID;
 @property (nonatomic, copy) NSString * _Nullable title;
 @property (nonatomic, copy) NSString * _Nullable type;
