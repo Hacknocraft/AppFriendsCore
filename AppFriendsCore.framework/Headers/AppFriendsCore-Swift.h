@@ -119,6 +119,7 @@ SWIFT_CLASS("_TtC14AppFriendsCore14HCSDKConstants")
 @class UIImage;
 @class NSData;
 @protocol HCSDKCoreSyncDelegate;
+@protocol HCSDKCoreEventsDelegate;
 
 SWIFT_CLASS("_TtC14AppFriendsCore9HCSDKCore")
 @interface HCSDKCore : NSObject
@@ -127,6 +128,7 @@ SWIFT_CLASS("_TtC14AppFriendsCore9HCSDKCore")
 @property (nonatomic, readonly, copy) NSString * _Nonnull applicationSecret;
 @property (nonatomic, readonly) BOOL registeredPush;
 @property (nonatomic, weak) id <HCSDKCoreSyncDelegate> _Nullable syncDelegate;
+@property (nonatomic, weak) id <HCSDKCoreEventsDelegate> _Nullable dialogEventDelegate;
 @property (nonatomic, readonly, copy) NSString * _Nullable appFriendsUserAccessToken;
 - (void)initializeWithKey:(NSString * _Nonnull)applicationKey secret:(NSString * _Nonnull)applicationSecret completion:(void (^ _Nullable)(BOOL success, NSError * _Nullable error))completion;
 - (void)enableDebug;
@@ -160,6 +162,14 @@ SWIFT_CLASS("_TtC14AppFriendsCore9HCSDKCore")
 - (NSString * _Null_unspecified)fullImage:(NSString * _Null_unspecified)publicID;
 - (NSString * _Null_unspecified)thumbnailImage:(NSString * _Null_unspecified)publicID;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_PROTOCOL("_TtP14AppFriendsCore23HCSDKCoreEventsDelegate_")
+@protocol HCSDKCoreEventsDelegate
+
+/// This is the callback to report dialog events posted by the app. For example, typing indicator is deliver via this callback
+- (void)dialogEventReceived:(NSString * _Nonnull)dialogID eventName:(NSString * _Nonnull)eventName customData:(NSString * _Nonnull)customData;
 @end
 
 
