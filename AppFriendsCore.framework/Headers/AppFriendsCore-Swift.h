@@ -161,6 +161,7 @@ SWIFT_CLASS("_TtC14AppFriendsCore9HCSDKCore")
 - (NSString * _Null_unspecified)videoThumbnailURL:(NSString * _Null_unspecified)publicID;
 - (NSString * _Null_unspecified)fullImage:(NSString * _Null_unspecified)publicID;
 - (NSString * _Null_unspecified)thumbnailImage:(NSString * _Null_unspecified)publicID;
+- (void)postMessageReceiptWithTempID:(NSString * _Nonnull)messageTempID dialogID:(NSString * _Nonnull)dialogID senderID:(NSString * _Nonnull)senderID receiptStatus:(NSString * _Nonnull)receiptStatus;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
