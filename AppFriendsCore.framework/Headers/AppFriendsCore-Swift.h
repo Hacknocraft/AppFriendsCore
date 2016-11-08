@@ -188,10 +188,10 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) HCSDKCore * 
 
 */
 - (void)uploadVideo:(NSData * _Nonnull)videoData completion:(void (^ _Nonnull)(NSString * _Nullable, NSError * _Nullable))completion progress:(void (^ _Nonnull)(NSInteger))progress;
-- (NSString * _Null_unspecified)videoStreamingURLWithPublicID:(NSString * _Null_unspecified)id;
-- (NSString * _Null_unspecified)videoThumbnailURLWithPublicID:(NSString * _Null_unspecified)id;
-- (NSString * _Null_unspecified)fullImageWithPublicID:(NSString * _Null_unspecified)id;
-- (NSString * _Null_unspecified)thumbnailImageWithPublicID:(NSString * _Null_unspecified)id;
+- (NSString * _Null_unspecified)videoStreamingURLWithPublicID:(NSString * _Nonnull)id;
+- (NSString * _Null_unspecified)videoThumbnailURLWithPublicID:(NSString * _Nonnull)id;
+- (NSString * _Null_unspecified)fullImageWithPublicID:(NSString * _Nonnull)id;
+- (NSString * _Null_unspecified)thumbnailImageWithPublicID:(NSString * _Nonnull)id;
 - (void)postMessageReceiptWithTempID:(NSString * _Nonnull)messageTempID dialogID:(NSString * _Nonnull)dialogID senderID:(NSString * _Nonnull)senderID receiptStatus:(NSString * _Nonnull)receiptStatus;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
