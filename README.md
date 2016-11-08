@@ -71,5 +71,8 @@ appFriendsCore.startRequest(httpMethod: "GET", path: "/users/\(userID)", paramet
 }
 ```
 
+## Sending Message
+
+
 ## Advanced Usage
 Besides chat and social, you can take advantage of the core of AppFriends, which is content pushing, to implement some interesting Applications. 
