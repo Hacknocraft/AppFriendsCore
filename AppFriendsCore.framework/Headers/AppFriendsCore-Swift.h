@@ -145,6 +145,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 + (NSString * _Nonnull)kMessageTypeChannel;
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull kMessageTypeSystem;)
 + (NSString * _Nonnull)kMessageTypeSystem;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull kNotificationDuplicatedSession;)
++ (NSString * _Nonnull)kNotificationDuplicatedSession;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
