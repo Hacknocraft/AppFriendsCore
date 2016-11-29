@@ -116,6 +116,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #endif
 #if defined(__has_feature) && __has_feature(modules)
 @import ObjectiveC;
+@import UIKit;
 @import Foundation;
 @import CoreData;
 #endif
@@ -151,6 +152,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 @end
 
 @class NSError;
+@class UIApplication;
 @class NSDictionary;
 @class UIImage;
 @protocol HCSDKCoreSyncDelegate;
@@ -167,6 +169,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) HCSDKCore * 
 @property (nonatomic, weak) id <HCSDKCoreEventsDelegate> _Nullable dialogEventDelegate;
 @property (nonatomic, readonly, copy) NSString * _Nullable appFriendsUserAccessToken;
 - (void)initializeWithKey:(NSString * _Nonnull)applicationKey secret:(NSString * _Nonnull)applicationSecret completion:(void (^ _Nullable)(BOOL, NSError * _Nullable))completion SWIFT_METHOD_FAMILY(none);
+- (void)application:(UIApplication * _Nonnull)application didFinishLaunchingWithOptions:(NSDictionary<UIApplicationLaunchOptionsKey, id> * _Nullable)launchOptions;
+- (void)application:(UIApplication * _Nonnull)application didReceiveRemoteNotification:(NSDictionary * _Nonnull)userInfo;
 - (void)enableDebug;
 - (BOOL)isLogin;
 - (void)loginWithUserInfo:(NSDictionary<NSString *, id> * _Nullable)params completion:(void (^ _Nullable)(id _Nullable, NSError * _Nullable))completion;
