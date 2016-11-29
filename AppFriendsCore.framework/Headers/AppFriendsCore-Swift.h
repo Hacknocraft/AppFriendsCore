@@ -117,7 +117,6 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #if defined(__has_feature) && __has_feature(modules)
 @import ObjectiveC;
 @import Foundation;
-@import UIKit;
 @import CoreData;
 #endif
 
@@ -201,7 +200,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) HCSDKCore * 
 - (NSString * _Null_unspecified)videoThumbnailURLWithPublicID:(NSString * _Nonnull)id;
 - (NSString * _Null_unspecified)fullImageWithPublicID:(NSString * _Nonnull)id;
 - (NSString * _Null_unspecified)thumbnailImageWithPublicID:(NSString * _Nonnull)id;
-- (void)application:(UIApplication * _Nonnull)application didFinishLaunchingWithOptions:(NSDictionary<UIApplicationLaunchOptionsKey, id> * _Nullable)launchOptions;
+- (void)application:(UIApplication * _Nonnull)application didFinishLaunchingWithOptions:(NSDictionary * _Nullable)launchOptions;
 - (void)application:(UIApplication * _Nonnull)application didReceiveRemoteNotification:(NSDictionary * _Nonnull)userInfo;
 - (void)postMessageReceiptWithTempID:(NSString * _Nonnull)messageTempID dialogID:(NSString * _Nonnull)dialogID senderID:(NSString * _Nonnull)senderID receiptStatus:(NSString * _Nonnull)receiptStatus;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
