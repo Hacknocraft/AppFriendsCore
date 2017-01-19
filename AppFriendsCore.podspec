@@ -26,7 +26,7 @@ s.source = { :git => "https://github.com/laeroah/AppFriendsCoreFramework.git", :
 # 7
 s.dependency 'Alamofire', '~> 4.0.1'
 s.dependency 'JWT', '~> 2.2.0'
-s.dependency 'CoreStore'
+s.dependency 'CoreStore', '~> 3.0.0'
 s.dependency 'Cloudinary', '~> 1.0.15'
 s.dependency 'Socket.IO-Client-Swift', '~> 8.1.1'
 
