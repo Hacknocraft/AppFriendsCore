@@ -150,8 +150,9 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
-@class NSError;
 @class NSDictionary;
+@class NSError;
+@protocol HCSDKCoreOnlineUserObserver;
 @class UIImage;
 @class UIApplication;
 @protocol HCSDKCoreSyncDelegate;
@@ -167,7 +168,12 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) HCSDKCore * 
 @property (nonatomic, weak) id <HCSDKCoreSyncDelegate> _Nullable syncDelegate;
 @property (nonatomic, weak) id <HCSDKCoreEventsDelegate> _Nullable dialogEventDelegate;
 @property (nonatomic, readonly, copy) NSString * _Nullable appFriendsUserAccessToken;
+@property (nonatomic, weak) id <HCSDKCoreOnlineUserObserver> _Nullable onlineUserObserver;
+@property (nonatomic, copy) NSArray<NSDictionary *> * _Nullable onlineUsers;
+@property (nonatomic) NSInteger onlineUsersCount;
 - (void)initializeWithKey:(NSString * _Nonnull)applicationKey secret:(NSString * _Nonnull)applicationSecret completion:(void (^ _Nullable)(BOOL, NSError * _Nullable))completion SWIFT_METHOD_FAMILY(none);
+- (void)subscribeToOnlineUsers:(id <HCSDKCoreOnlineUserObserver> _Nonnull)observer;
+- (void)unsubscribeToOlineUsers;
 - (void)enableDebug;
 - (BOOL)isLogin;
 - (void)loginWithUserInfo:(NSDictionary<NSString *, id> * _Nullable)params completion:(void (^ _Nullable)(id _Nullable, NSError * _Nullable))completion;
@@ -181,7 +187,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) HCSDKCore * 
   \param channelID the public channel’s ID
 
 */
-- (void)renewSessionForPublicChannel:(NSString * _Nonnull)channelID;
+- (void)renewSessionForPublicChannel:(NSString * _Nonnull)channelID forceReloadMessage:(BOOL)forced completion:(void (^ _Nullable)(BOOL))completion;
+- (void)fetchHistoryMessagesFromPublicChannel:(NSString * _Nonnull)channelID fromMessageID:(NSString * _Nonnull)messageID completion:(void (^ _Nullable)(NSError * _Nullable, NSString * _Nullable))completion;
 - (void)sendMessage:(NSDictionary * _Nonnull)messageJSON dialogID:(NSString * _Nonnull)dialogID completion:(void (^ _Nullable)(id _Nullable, NSError * _Nullable))completion;
 - (void)sendMessage:(NSDictionary * _Nonnull)messageJSON userID:(NSString * _Nonnull)userID completion:(void (^ _Nullable)(id _Nullable, NSError * _Nullable))completion;
 - (void)sendMessage:(NSDictionary * _Nonnull)messageJSON channelID:(NSString * _Nonnull)channelID completion:(void (^ _Nullable)(id _Nullable, NSError * _Nullable))completion;
@@ -202,6 +209,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) HCSDKCore * 
 - (NSString * _Null_unspecified)thumbnailImageWithPublicID:(NSString * _Nonnull)id;
 - (void)application:(UIApplication * _Nonnull)application didFinishLaunchingWithOptions:(NSDictionary * _Nullable)launchOptions;
 - (void)application:(UIApplication * _Nonnull)application didReceiveRemoteNotification:(NSDictionary * _Nonnull)userInfo;
+- (void)joinChannelWithChannelID:(NSString * _Nonnull)id completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+- (void)leaveChannelWithChannelID:(NSString * _Nonnull)id completion:(void (^ _Nullable)(NSError * _Nullable))completion;
 - (void)postMessageReceiptWithTempID:(NSString * _Nonnull)messageTempID dialogID:(NSString * _Nonnull)dialogID senderID:(NSString * _Nonnull)senderID receiptStatus:(NSString * _Nonnull)receiptStatus;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -213,6 +222,12 @@ SWIFT_PROTOCOL("_TtP14AppFriendsCore23HCSDKCoreEventsDelegate_")
   This is the callback to report dialog events posted by the app. For example, typing indicator is deliver via this callback
 */
 - (void)dialogEventReceived:(NSString * _Nonnull)dialogID eventName:(NSString * _Nonnull)eventName customData:(NSString * _Nonnull)customData;
+@end
+
+
+SWIFT_PROTOCOL("_TtP14AppFriendsCore27HCSDKCoreOnlineUserObserver_")
+@protocol HCSDKCoreOnlineUserObserver
+- (void)onlineUserCountChangedWithCount:(NSInteger)count;
 @end
 
 
