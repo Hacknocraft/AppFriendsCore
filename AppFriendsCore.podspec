@@ -21,13 +21,13 @@ s.homepage = "http://appfriends.me"
 
 # 6 - framework location
 s.vendored_frameworks = "AppFriendsCore.framework"
-s.source = { :git => "https://github.com/laeroah/AppFriendsCoreFramework.git", :tag => "0.1.57"}
+s.source = { :git => "https://github.com/laeroah/AppFriendsCoreFramework.git", :tag => "1.1.1"}
 
 # 7
-s.dependency 'Alamofire', '~> 4.0.1'
-s.dependency 'JWT', '~> 2.1.0'
-s.dependency 'CoreStore'
+s.dependency 'Alamofire', '~> 4.3.0'
+s.dependency 'JWT', '~> 2.2.0'
+s.dependency 'CoreStore', '~> 3.0.0'
 s.dependency 'Cloudinary', '~> 1.0.15'
-s.dependency 'Socket.IO-Client-Swift', '~> 8.1.1'
+s.dependency 'Socket.IO-Client-Swift', '~> 8.2.0'
 
 end
