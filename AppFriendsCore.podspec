@@ -8,7 +8,7 @@ s.summary = "Core SDK for AppFriends."
 s.requires_arc = true
 
 # 2
-s.version = "0.1.57"
+s.version = "1.1.1"
 
 # 3
 s.license = { :type => "MIT" }
