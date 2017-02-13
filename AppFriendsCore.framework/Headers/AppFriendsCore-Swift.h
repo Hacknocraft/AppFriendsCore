@@ -137,6 +137,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 + (NSString * _Nonnull)kUserRealName;
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull kCustomData;)
 + (NSString * _Nonnull)kCustomData;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull kAppFriendsPushCategory;)
++ (NSString * _Nonnull)kAppFriendsPushCategory;
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull kMessageTypeGroup;)
 + (NSString * _Nonnull)kMessageTypeGroup;
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull kMessageTypeIndividual;)
