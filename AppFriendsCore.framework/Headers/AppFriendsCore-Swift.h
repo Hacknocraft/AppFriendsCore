@@ -122,19 +122,6 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 
 #pragma clang diagnostic ignored "-Wproperty-attribute-mismatch"
 #pragma clang diagnostic ignored "-Wduplicate-method-arg"
-typedef SWIFT_ENUM(NSInteger, AFError) {
-  AFErrorUnknownError = 90000,
-  AFErrorInvalidParams = 90001,
-  AFErrorSdkNotInitialized = 90002,
-  AFErrorUserNotLoggedIn = 90003,
-  AFErrorDialogNotFound = 20005,
-  AFErrorUserAlreadyLoggedIn = 90007,
-  AFErrorLogoutWhenNotLoggedIn = 90009,
-  AFErrorServerError = 90500,
-  AFErrorUserNotFound = 30001,
-  AFErrorRequestIsTooFrequent = 91000,
-};
-
 
 SWIFT_CLASS("_TtC14AppFriendsCore14HCSDKConstants")
 @interface HCSDKConstants : NSObject
@@ -152,6 +139,12 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 + (NSString * _Nonnull)kCustomData;
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull kAppFriendsPushCategory;)
 + (NSString * _Nonnull)kAppFriendsPushCategory;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull kMessageTypeGroup;)
++ (NSString * _Nonnull)kMessageTypeGroup;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull kMessageTypeIndividual;)
++ (NSString * _Nonnull)kMessageTypeIndividual;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull kMessageTypeChannel;)
++ (NSString * _Nonnull)kMessageTypeChannel;
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull kMessageTypeSystem;)
 + (NSString * _Nonnull)kMessageTypeSystem;
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull kNotificationDuplicatedSession;)
@@ -180,29 +173,28 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) HCSDKCore * 
 @property (nonatomic, weak) id <HCSDKCoreOnlineUserObserver> _Nullable onlineUserObserver;
 @property (nonatomic, copy) NSArray<NSDictionary *> * _Nullable onlineUsers;
 @property (nonatomic) NSInteger onlineUsersCount;
-- (void)initializeWithKey:(NSString * _Nonnull)applicationKey secret:(NSString * _Nonnull)applicationSecret uiVersion:(NSString * _Nullable)version completion:(void (^ _Nullable)(BOOL, NSError * _Nullable))completion SWIFT_METHOD_FAMILY(none);
+- (void)initializeWithKey:(NSString * _Nonnull)applicationKey secret:(NSString * _Nonnull)applicationSecret completion:(void (^ _Nullable)(BOOL, NSError * _Nullable))completion SWIFT_METHOD_FAMILY(none);
 - (void)subscribeToOnlineUsers:(id <HCSDKCoreOnlineUserObserver> _Nonnull)observer;
 - (void)unsubscribeToOlineUsers;
 - (void)enableDebug;
 - (BOOL)isLogin;
 - (void)loginWithUserInfo:(NSDictionary<NSString *, id> * _Nullable)params completion:(void (^ _Nullable)(id _Nullable, NSError * _Nullable))completion;
-/**
-  Logout the current user.
-  <em>warning</em>* Please Note that this call alone does not unregister the device for push notification.
-  If you have previously registered the device for push,
-  we recommand calling AFSession.unregisterDeviceForPushNotification before you call logout.
-  \param completion call back block, which will have an error if the logout has failed
-
-*/
 - (void)logout:(void (^ _Nullable)(NSError * _Nullable))completion;
 - (void)startRequestWithHttpMethod:(NSString * _Nonnull)method path:(NSString * _Nonnull)requestPath parameters:(NSDictionary<NSString *, id> * _Nullable)params completion:(void (^ _Nullable)(id _Nullable, NSError * _Nullable))completion;
 - (void)registerDeviceForPush:(NSString * _Nonnull)userID pushToken:(NSString * _Nonnull)pushToken completion:(void (^ _Nullable)(NSError * _Nullable))completion;
 - (NSString * _Nullable)currentUserID;
 - (NSString * _Nullable)currentUserName;
 - (void)updateUserInfo:(NSString * _Nonnull)userID userInfo:(NSDictionary<NSString *, id> * _Nonnull)userInfo completion:(void (^ _Nullable)(id _Nullable, NSError * _Nullable))completion;
-- (void)sendMessage:(NSDictionary<NSString *, id> * _Nonnull)messageJSON dialogID:(NSString * _Nonnull)dialogID completion:(void (^ _Nullable)(id _Nullable, NSError * _Nullable))completion;
-- (void)sendMessage:(NSDictionary<NSString *, id> * _Nonnull)messageJSON userID:(NSString * _Nonnull)userID completion:(void (^ _Nullable)(id _Nullable, NSError * _Nullable))completion;
-- (void)sendMessage:(NSDictionary<NSString *, id> * _Nonnull)messageJSON channelID:(NSString * _Nonnull)channelID completion:(void (^ _Nullable)(id _Nullable, NSError * _Nullable))completion;
+/**
+  User’s session in public channel expires in 3 minutes, so if you are in the channel, you should renew the session before it expires.
+  \param channelID the public channel’s ID
+
+*/
+- (void)renewSessionForPublicChannel:(NSString * _Nonnull)channelID forceReloadMessage:(BOOL)forced completion:(void (^ _Nullable)(BOOL))completion;
+- (void)fetchHistoryMessagesFromPublicChannel:(NSString * _Nonnull)channelID fromMessageID:(NSString * _Nonnull)messageID completion:(void (^ _Nullable)(NSError * _Nullable, NSString * _Nullable))completion;
+- (void)sendMessage:(NSDictionary * _Nonnull)messageJSON dialogID:(NSString * _Nonnull)dialogID completion:(void (^ _Nullable)(id _Nullable, NSError * _Nullable))completion;
+- (void)sendMessage:(NSDictionary * _Nonnull)messageJSON userID:(NSString * _Nonnull)userID completion:(void (^ _Nullable)(id _Nullable, NSError * _Nullable))completion;
+- (void)sendMessage:(NSDictionary * _Nonnull)messageJSON channelID:(NSString * _Nonnull)channelID completion:(void (^ _Nullable)(id _Nullable, NSError * _Nullable))completion;
 - (void)uploadImage:(UIImage * _Nonnull)image completion:(void (^ _Nonnull)(NSString * _Nullable, NSError * _Nullable))completion progress:(void (^ _Nonnull)(NSInteger))progress;
 /**
   upload video to AppFriends CDN
@@ -214,44 +206,23 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) HCSDKCore * 
 
 */
 - (void)uploadVideo:(NSData * _Nonnull)videoData completion:(void (^ _Nonnull)(NSString * _Nullable, NSError * _Nullable))completion progress:(void (^ _Nonnull)(NSInteger))progress;
-- (NSString * _Null_unspecified)videoStreamingURLWithPublicID:(NSString * _Nonnull)pid;
-- (NSString * _Null_unspecified)videoThumbnailURLWithPublicID:(NSString * _Nonnull)pid;
-- (NSString * _Null_unspecified)fullImageWithPublicID:(NSString * _Nonnull)pid;
-- (NSString * _Null_unspecified)thumbnailImageWithPublicID:(NSString * _Nonnull)pid;
+- (NSString * _Null_unspecified)videoStreamingURLWithPublicID:(NSString * _Nonnull)id;
+- (NSString * _Null_unspecified)videoThumbnailURLWithPublicID:(NSString * _Nonnull)id;
+- (NSString * _Null_unspecified)fullImageWithPublicID:(NSString * _Nonnull)id;
+- (NSString * _Null_unspecified)thumbnailImageWithPublicID:(NSString * _Nonnull)id;
 - (void)application:(UIApplication * _Nonnull)application didFinishLaunchingWithOptions:(NSDictionary * _Nullable)launchOptions;
 - (void)application:(UIApplication * _Nonnull)application didReceiveRemoteNotification:(NSDictionary * _Nonnull)userInfo;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-@interface HCSDKCore (SWIFT_EXTENSION(AppFriendsCore))
+- (void)joinChannelWithChannelID:(NSString * _Nonnull)id completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+- (void)leaveChannelWithChannelID:(NSString * _Nonnull)id completion:(void (^ _Nullable)(NSError * _Nullable))completion;
 - (void)postMessageReceiptWithTempID:(NSString * _Nonnull)messageTempID dialogID:(NSString * _Nonnull)dialogID senderID:(NSString * _Nonnull)senderID receiptStatus:(NSString * _Nonnull)receiptStatus;
-@end
-
-
-@interface HCSDKCore (SWIFT_EXTENSION(AppFriendsCore))
-/**
-  User’s session in public channel expires in 3 minutes,
-  so if you are in the channel, you should renew the session before it expires.
-  \param channelID the public channel’s ID
-
-*/
-- (void)renewSessionForPublicChannel:(NSString * _Nonnull)channelID forceReloadMessage:(BOOL)forced completion:(void (^ _Nullable)(BOOL))completion;
-- (void)fetchHistoryMessagesFromPublicChannel:(NSString * _Nonnull)channelID fromMessageID:(NSString * _Nonnull)messageID completion:(void (^ _Nullable)(NSError * _Nullable, NSString * _Nullable))completion;
-- (void)joinChannelWithChannelID:(NSString * _Nonnull)cid completion:(void (^ _Nullable)(NSError * _Nullable))completion;
-- (void)leaveChannelWithChannelID:(NSString * _Nonnull)cid completion:(void (^ _Nullable)(NSError * _Nullable))completion;
-@end
-
-
-@interface HCSDKCore (SWIFT_EXTENSION(AppFriendsCore))
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
 SWIFT_PROTOCOL("_TtP14AppFriendsCore23HCSDKCoreEventsDelegate_")
 @protocol HCSDKCoreEventsDelegate
 /**
-  This is the callback to report dialog events posted by the app.
-  For example, typing indicator is deliver via this callback
+  This is the callback to report dialog events posted by the app. For example, typing indicator is deliver via this callback
 */
 - (void)dialogEventReceived:(NSString * _Nonnull)dialogID eventName:(NSString * _Nonnull)eventName customData:(NSString * _Nonnull)customData;
 @end
@@ -272,10 +243,7 @@ SWIFT_PROTOCOL("_TtP14AppFriendsCore21HCSDKCoreSyncDelegate_")
 */
 - (void)messagesReceived:(NSArray<NSDictionary<NSString *, id> *> * _Nonnull)messages;
 /**
-  This is asking to provide the last message you received in a certain channel.
-  AppFriendsUI SDK takes care of this.
-  However, if you decide to only use AppFriendsCore,
-  you need to be responsible of implementing this method in the delegate class
+  This is asking to provide the last message you received in a certain channel. AppFriendsUI SDK takes care of this. However, if you decide to only use AppFriendsCore, you need to be responsible of implementing this method in the delegate class
   \param channelID the ID of the channel
 
 
@@ -283,13 +251,6 @@ SWIFT_PROTOCOL("_TtP14AppFriendsCore21HCSDKCoreSyncDelegate_")
   the ID of the last message you received in that channel
 */
 - (NSString * _Nullable)lastReceivedMessageIDInChannel:(NSString * _Nonnull)channelID;
-@end
-
-
-@interface NSError (SWIFT_EXTENSION(AppFriendsCore))
-+ (NSError * _Nonnull)errorWithAFErrorWithAfError:(enum AFError)afError;
-+ (NSError * _Nonnull)errorWithAFErrorWithAfError:(enum AFError)afError errorMessage:(NSString * _Nonnull)errorMessage;
-+ (NSError * _Nonnull)afErrorWithErrorCode:(NSInteger)code errorReason:(NSString * _Nullable)reason errorDescription:(NSString * _Nullable)description;
 @end
 
 @class NSManagedObjectContext;
