@@ -255,12 +255,14 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) HCSDKCore * 
 
 
 @interface HCSDKCore (SWIFT_EXTENSION(AppFriendsCore))
+- (NSDictionary<NSString *, NSString *> * _Nonnull)appfriendsHttpHeader SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)isAppFriendsVideoURLWithUrl:(NSString * _Nonnull)url SWIFT_WARN_UNUSED_RESULT;
 - (NSString * _Nonnull)videoStreamingURLWithPublicID:(NSString * _Nonnull)pid SWIFT_WARN_UNUSED_RESULT;
 - (NSString * _Nonnull)videoThumbnailURLWithPublicID:(NSString * _Nonnull)pid SWIFT_WARN_UNUSED_RESULT;
 - (NSString * _Nonnull)fullImageWithPublicID:(NSString * _Nonnull)pid SWIFT_WARN_UNUSED_RESULT;
 - (NSString * _Nonnull)thumbnailImageWithPublicID:(NSString * _Nonnull)pid SWIFT_WARN_UNUSED_RESULT;
 - (NSString * _Nonnull)convertToAppFriendsResourceWithOriginal:(NSString * _Nonnull)url SWIFT_WARN_UNUSED_RESULT;
+- (NSString * _Nonnull)convertFromAppFriendsResourceWithOriginal:(NSString * _Nonnull)url SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
