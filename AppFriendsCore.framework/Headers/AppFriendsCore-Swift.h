@@ -132,9 +132,9 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 # define SWIFT_DEPRECATED_MSG(...) __attribute__((deprecated(__VA_ARGS__)))
 #endif
 #if defined(__has_feature) && __has_feature(modules)
+@import CoreData;
 @import ObjectiveC;
 @import Foundation;
-@import CoreData;
 #endif
 
 #pragma clang diagnostic ignored "-Wproperty-attribute-mismatch"
@@ -151,6 +151,27 @@ typedef SWIFT_ENUM(NSInteger, AFError) {
   AFErrorUserNotFound = 30001,
   AFErrorRequestIsTooFrequent = 91000,
 };
+
+@class NSEntityDescription;
+@class NSManagedObjectContext;
+
+SWIFT_CLASS_NAMED("HCDialog")
+@interface HCDialog : NSManagedObject
+- (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class NSObject;
+@class NSNumber;
+
+@interface HCDialog (SWIFT_EXTENSION(AppFriendsCore))
+@property (nonatomic, copy) NSString * _Nullable customData;
+@property (nonatomic, copy) NSString * _Nullable dialogID;
+@property (nonatomic, strong) NSObject * _Nullable members;
+@property (nonatomic, strong) NSNumber * _Nullable muted;
+@property (nonatomic, copy) NSString * _Nullable ownerID;
+@property (nonatomic, copy) NSString * _Nullable title;
+@property (nonatomic, copy) NSString * _Nullable type;
+@end
 
 
 SWIFT_CLASS("_TtC14AppFriendsCore14HCSDKConstants")
@@ -204,7 +225,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) HCSDKCore * 
 - (void)subscribeToOnlineUsers:(id <HCSDKCoreOnlineUserObserver> _Nonnull)observer;
 - (void)unsubscribeToOlineUsers;
 - (void)enableDebug;
-- (BOOL)isLogin SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)isLoggedIn SWIFT_WARN_UNUSED_RESULT;
 - (void)loginWithUserInfo:(NSDictionary<NSString *, id> * _Nullable)params completion:(void (^ _Nullable)(id _Nullable, NSError * _Nullable))completion;
 /// Logout the current user.
 /// <em>warning</em>* Please Note that this call alone does not unregister the device for push notification.
@@ -325,25 +346,6 @@ SWIFT_PROTOCOL("_TtP14AppFriendsCore21HCSDKCoreSyncDelegate_")
 + (NSError * _Nonnull)errorWithAFErrorWithAfError:(enum AFError)afError SWIFT_WARN_UNUSED_RESULT;
 + (NSError * _Nonnull)errorWithAFErrorWithAfError:(enum AFError)afError errorMessage:(NSString * _Nonnull)errorMessage SWIFT_WARN_UNUSED_RESULT;
 + (NSError * _Nonnull)afErrorWithErrorCode:(NSInteger)code errorReason:(NSString * _Nullable)reason errorDescription:(NSString * _Nullable)description SWIFT_WARN_UNUSED_RESULT;
-@end
-
-@class NSManagedObjectContext;
-@class NSEntityDescription;
-@class NSNumber;
-
-SWIFT_CLASS("_TtC14AppFriendsCore9_HCDialog")
-@interface _HCDialog : NSManagedObject
-+ (NSString * _Nonnull)entityName SWIFT_WARN_UNUSED_RESULT;
-+ (NSEntityDescription * _Nullable)entity:(NSManagedObjectContext * _Nonnull)managedObjectContext SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithManagedObjectContext:(NSManagedObjectContext * _Nonnull)managedObjectContext;
-@property (nonatomic, copy) NSString * _Nullable customData;
-@property (nonatomic, copy) NSString * _Nullable dialogID;
-@property (nonatomic, strong) id _Nullable members;
-@property (nonatomic, strong) NSNumber * _Nullable muted;
-@property (nonatomic, copy) NSString * _Nullable ownerID;
-@property (nonatomic, copy) NSString * _Nullable title;
-@property (nonatomic, copy) NSString * _Nullable type;
 @end
 
 #pragma clang diagnostic pop
