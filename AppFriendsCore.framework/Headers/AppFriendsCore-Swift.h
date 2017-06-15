@@ -204,7 +204,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 @class NSDictionary;
 @class NSError;
 @class UIImage;
-@class UIApplication;
 
 SWIFT_CLASS("_TtC14AppFriendsCore9HCSDKCore")
 @interface HCSDKCore : NSObject
@@ -235,6 +234,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) HCSDKCore * 
 ///
 - (void)logout:(void (^ _Nullable)(NSError * _Nullable))completion;
 - (void)startRequestWithHttpMethod:(NSString * _Nonnull)method path:(NSString * _Nonnull)requestPath parameters:(NSDictionary<NSString *, id> * _Nullable)params completion:(void (^ _Nullable)(id _Nullable, NSError * _Nullable))completion;
+- (void)startRequestWithHttpMethod:(NSString * _Nonnull)method path:(NSString * _Nonnull)requestPath jsonBody:(id _Nonnull)jsonBody completion:(void (^ _Nullable)(id _Nullable, NSError * _Nullable))completion;
 - (void)registerDeviceForPush:(NSString * _Nonnull)userID pushToken:(NSString * _Nonnull)pushToken completion:(void (^ _Nullable)(NSError * _Nullable))completion;
 - (NSString * _Nullable)currentUserID SWIFT_WARN_UNUSED_RESULT;
 - (NSString * _Nullable)currentUserName SWIFT_WARN_UNUSED_RESULT;
@@ -251,8 +251,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) HCSDKCore * 
 /// \param progress progress block
 ///
 - (void)uploadVideo:(NSData * _Nonnull)videoData completion:(void (^ _Nonnull)(NSString * _Nullable, NSError * _Nullable))completion progress:(void (^ _Nonnull)(NSInteger))progress;
-- (void)application:(UIApplication * _Nonnull)application didFinishLaunchingWithOptions:(NSDictionary * _Nullable)launchOptions;
-- (BOOL)application:(UIApplication * _Nonnull)application didReceiveRemoteNotification:(NSDictionary * _Nonnull)userInfo SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -278,6 +276,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) HCSDKCore * 
 @end
 
 @class NSHTTPCookie;
+@class UIApplication;
 
 @interface HCSDKCore (SWIFT_EXTENSION(AppFriendsCore))
 - (NSDictionary<NSString *, NSString *> * _Nonnull)appfriendsHttpHeader SWIFT_WARN_UNUSED_RESULT;
@@ -296,6 +295,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) HCSDKCore * 
 /// private url
 - (NSString * _Nonnull)convertToAppFriendsPrivateResourceWithOriginal:(NSString * _Nonnull)url SWIFT_WARN_UNUSED_RESULT;
 - (NSString * _Nonnull)convertFromAppFriendsResourceWithOriginal:(NSString * _Nonnull)url SWIFT_WARN_UNUSED_RESULT;
+- (void)application:(UIApplication * _Nonnull)application didFinishLaunchingWithOptions:(NSDictionary * _Nullable)launchOptions;
+- (BOOL)application:(UIApplication * _Nonnull)application didReceiveRemoteNotification:(NSDictionary * _Nonnull)userInfo SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
