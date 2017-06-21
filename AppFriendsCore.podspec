@@ -8,7 +8,7 @@ s.summary = "Core SDK for AppFriends."
 s.requires_arc = true
 
 # 2
-s.version = "2.0.3"
+s.version = "2.0.5"
 
 # 3
 s.license = { :type => "MIT" }
@@ -24,10 +24,10 @@ s.vendored_frameworks = "AppFriendsCore.framework"
 s.source = { :git => "https://github.com/Hacknocraft/AppFriendsCore.git", :tag => s.version.to_s}
 
 # 7
-s.dependency 'Alamofire', '~> 4.3.0'
+s.dependency 'Alamofire', '~> 4.4.0'
 s.dependency 'JWT', '~> 2.2.0'
-s.dependency 'CoreStore', '~> 3.0.0'
+s.dependency 'CoreStore', '~> 4.0'
 s.dependency 'Cloudinary', '~> 1.0.15'
-s.dependency 'Socket.IO-Client-Swift', '~> 8.2.0'
+s.dependency 'Socket.IO-Client-Swift', '~> 8.3.0'
 
 end
