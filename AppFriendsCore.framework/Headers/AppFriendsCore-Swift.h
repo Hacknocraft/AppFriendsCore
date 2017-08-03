@@ -139,6 +139,15 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 
 #pragma clang diagnostic ignored "-Wproperty-attribute-mismatch"
 #pragma clang diagnostic ignored "-Wduplicate-method-arg"
+
+SWIFT_PROTOCOL("_TtP14AppFriendsCore20AFEncryptionDelegate_")
+@protocol AFEncryptionDelegate
+- (void)encryptWithText:(NSString * _Nonnull)text forUser:(NSString * _Nonnull)userID completion:(void (^ _Nullable)(NSString * _Nullable, NSError * _Nullable))completion;
+- (void)decryptWithEncryptedText:(NSString * _Nonnull)encryptedText forUser:(NSString * _Nonnull)userID completion:(void (^ _Nullable)(NSString * _Nullable, NSError * _Nullable))completion;
+- (void)encryptWithText:(NSString * _Nonnull)text forDialog:(NSString * _Nonnull)dialogID completion:(void (^ _Nullable)(NSString * _Nullable, NSError * _Nullable))completion;
+- (void)decryptWithEncryptedText:(NSString * _Nonnull)encryptedText forDialog:(NSString * _Nonnull)dialogID completion:(void (^ _Nullable)(NSString * _Nullable, NSError * _Nullable))completion;
+@end
+
 typedef SWIFT_ENUM(NSInteger, AFError) {
   AFErrorUnknownError = 90000,
   AFErrorInvalidParams = 90001,
@@ -215,6 +224,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) HCSDKCore * 
 @property (nonatomic, weak) id <HCSDKCoreSyncDelegate> _Nullable syncDelegate;
 @property (nonatomic, weak) id <HCSDKCoreEventsDelegate> _Nullable dialogEventDelegate;
 @property (nonatomic, weak) id <HCSDKCoreAppCustomDataDelegate> _Nullable customDataReceiver;
+@property (nonatomic, weak) id <AFEncryptionDelegate> _Nullable encryptionDelegate;
 @property (nonatomic, readonly, copy) NSString * _Nullable appFriendsUserAccessToken;
 @property (nonatomic, weak) id <HCSDKCoreOnlineUserObserver> _Nullable onlineUserObserver;
 @property (nonatomic, copy) NSArray<NSDictionary *> * _Nullable onlineUsers;
