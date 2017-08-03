@@ -142,10 +142,38 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 
 SWIFT_PROTOCOL("_TtP14AppFriendsCore20AFEncryptionDelegate_")
 @protocol AFEncryptionDelegate
-- (void)encryptWithText:(NSString * _Nonnull)text forUser:(NSString * _Nonnull)userID completion:(void (^ _Nullable)(NSString * _Nullable, NSError * _Nullable))completion;
-- (void)decryptWithEncryptedText:(NSString * _Nonnull)encryptedText forUser:(NSString * _Nonnull)userID completion:(void (^ _Nullable)(NSString * _Nullable, NSError * _Nullable))completion;
-- (void)encryptWithText:(NSString * _Nonnull)text forDialog:(NSString * _Nonnull)dialogID completion:(void (^ _Nullable)(NSString * _Nullable, NSError * _Nullable))completion;
-- (void)decryptWithEncryptedText:(NSString * _Nonnull)encryptedText forDialog:(NSString * _Nonnull)dialogID completion:(void (^ _Nullable)(NSString * _Nullable, NSError * _Nullable))completion;
+/// Encrypt an array of text before sending it to a user. The delegate should encrypt the text with the user’s public key.
+/// \param text the array of text to be encrypted
+///
+/// \param userID the ID of the receiver
+///
+/// \param completion finish callback block. Will contain either the error or the array of encrypted text depending on the result of the encryption
+///
+- (void)encryptWithTexts:(NSArray<NSString *> * _Nonnull)texts forUser:(NSString * _Nonnull)userID completion:(void (^ _Nullable)(NSArray<NSString *> * _Nullable, NSError * _Nullable))completion;
+/// Decrypt and array of encrypted text for a user
+/// \param encryptedText the array of the encrypted text
+///
+/// \param userID the ID of the receiver
+///
+/// \param completion finish callback block. Will contain either the error or the array of decrypted text depending on the result of the encryption
+///
+- (void)decryptWithEncryptedTexts:(NSArray<NSString *> * _Nonnull)encryptedTexts forUser:(NSString * _Nonnull)userID completion:(void (^ _Nullable)(NSArray<NSString *> * _Nullable, NSError * _Nullable))completion;
+/// Encrypt an array of text before sending it to a conversation. The delegate should encrypt the text with the public keys of all the users in the conversation.
+/// \param text the array of text to be encrypted
+///
+/// \param dialogID the ID of the dialog
+///
+/// \param completion finish callback block. Will contain either the error or the array of encrypted text depending on the result of the encryption
+///
+- (void)encryptWithTexts:(NSArray<NSString *> * _Nonnull)texts forDialog:(NSString * _Nonnull)dialogID completion:(void (^ _Nullable)(NSArray<NSString *> * _Nullable, NSError * _Nullable))completion;
+/// Decrypt and array of encrypted text for a dialog
+/// \param encryptedText the array of the encrypted text
+///
+/// \param userID the ID of the dialog
+///
+/// \param completion finish callback block. Will contain either the error or the array of decrypted text depending on the result of the encryption
+///
+- (void)decryptWithEncryptedTexts:(NSArray<NSString *> * _Nonnull)encryptedTexts forDialog:(NSString * _Nonnull)dialogID completion:(void (^ _Nullable)(NSArray<NSString *> * _Nullable, NSError * _Nullable))completion;
 @end
 
 typedef SWIFT_ENUM(NSInteger, AFError) {
