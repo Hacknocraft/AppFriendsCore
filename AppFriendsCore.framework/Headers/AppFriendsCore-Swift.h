@@ -367,7 +367,7 @@ SWIFT_PROTOCOL("_TtP14AppFriendsCore21HCSDKCoreSyncDelegate_")
 /// This is the callback when new messages are received
 /// \param messages array of messages of JSON objects
 ///
-- (void)messagesReceived:(NSArray<NSDictionary<NSString *, id> *> * _Nonnull)messages;
+- (void)messagesReceived:(NSArray<NSDictionary<NSString *, id> *> * _Nonnull)messages completion:(void (^ _Nullable)(BOOL))completion;
 /// This is asking to provide the last message you received in a certain channel.
 /// AppFriendsUI SDK takes care of this.
 /// However, if you decide to only use AppFriendsCore,
