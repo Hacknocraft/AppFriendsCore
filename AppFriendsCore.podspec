@@ -28,6 +28,6 @@ s.dependency 'Alamofire', '~> 4.4.0'
 s.dependency 'JWT', '~> 2.2.0'
 s.dependency 'CoreStore', '~> 4.0'
 s.dependency 'Cloudinary', '~> 1.0.15'
-s.dependency 'Socket.IO-Client-Swift', '~> 8.3.0'
+s.dependency 'Socket.IO-Client-Swift'
 
 end
