@@ -229,6 +229,7 @@ typedef SWIFT_ENUM(NSInteger, AFError) {
   AFErrorSdkNotInitialized = 90002,
   AFErrorUserNotLoggedIn = 90003,
   AFErrorDialogNotFound = 20005,
+  AFErrorDataFetchStoreFailed = 20010,
   AFErrorUserAlreadyLoggedIn = 90007,
   AFErrorLogoutWhenNotLoggedIn = 90009,
   AFErrorServerError = 90500,
