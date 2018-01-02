@@ -319,6 +319,10 @@ SWIFT_PROTOCOL("_TtP14AppFriendsCore21HCSDKCoreSyncDelegate_")
 /// returns:
 /// the ID of the last message you received in that channel
 - (NSString * _Nullable)lastReceivedMessageIDInChannel:(NSString * _Nonnull)channelID SWIFT_WARN_UNUSED_RESULT;
+/// This is reporting initial message syncing is successful
+- (void)initialSyncingFinished;
+/// This is reporting initial message syncing has failed
+- (void)initialSyncingFailed;
 @end
 
 
