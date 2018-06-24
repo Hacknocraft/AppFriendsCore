@@ -25,7 +25,7 @@ s.source = { :git => "https://github.com/Hacknocraft/AppFriendsCore.git", :tag =
 
 # 7
 s.dependency 'Alamofire', '~> 4.5.1'
-s.dependency 'JWT', '~> 2.2.0'
+s.dependency 'SwiftyJWT', '~> 0.0.2'
 s.dependency 'CoreStore', '~> 5.0'
 s.dependency 'Cloudinary', '~> 1.0.15'
 s.dependency 'Socket.IO-Client-Swift', '~> 12.0.0'
