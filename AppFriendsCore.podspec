@@ -8,7 +8,7 @@ s.summary = "Core SDK for AppFriends."
 s.requires_arc = true
 
 # 2
-s.version = "2.2.2-beta"
+s.version = "2.2.3"
 
 # 3
 s.license = { :type => "MIT" }
@@ -28,6 +28,6 @@ s.dependency 'Alamofire', '~> 4.5.1'
 s.dependency 'SwiftyJWT', '~> 0.0.2'
 s.dependency 'CoreStore', '~> 5.0'
 s.dependency 'Cloudinary', '~> 1.0.15'
-s.dependency 'Socket.IO-Client-Swift', '~> 12.0.0'
+s.dependency 'Socket.IO-Client-Swift', '~> 13.4.0'
 
 end
