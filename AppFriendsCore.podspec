@@ -1,14 +1,14 @@
 Pod::Spec.new do |s|
 
 # 1
-s.platform = :ios, '9.0'
-s.ios.deployment_target = '9.0'
+s.platform = :ios, '10.0'
+s.ios.deployment_target = '10.0'
 s.name = "AppFriendsCore"
 s.summary = "Core SDK for AppFriends."
 s.requires_arc = true
 
 # 2
-s.version = "2.2.5"
+s.version = "2.3.0"
 
 # 3
 s.license = { :type => "MIT" }
@@ -24,10 +24,10 @@ s.vendored_frameworks = "AppFriendsCore.framework"
 s.source = { :git => "https://github.com/Hacknocraft/AppFriendsCore.git", :tag => s.version.to_s}
 
 # 7
-s.dependency 'Alamofire', '~> 4.5.1'
+s.dependency 'Alamofire', '~> 5.0.0-beta.4'
 s.dependency 'SwiftyJWT', '~> 0.0.2'
-s.dependency 'CoreStore', '~> 5.0'
+s.dependency 'CoreStore', '~> 6.3.0'
 s.dependency 'Cloudinary', '~> 1.0.15'
-s.dependency 'Socket.IO-Client-Swift', '~> 13.4.0'
+s.dependency 'Socket.IO-Client-Swift', '~> 15.0.0'
 
 end
