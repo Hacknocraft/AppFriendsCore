@@ -7,4 +7,5 @@ framework module AppFriendsCore {
 
 module AppFriendsCore.Swift {
     header "AppFriendsCore-Swift.h"
+    requires objc
 }
