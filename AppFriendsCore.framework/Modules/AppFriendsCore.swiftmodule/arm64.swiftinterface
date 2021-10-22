@@ -1,6 +1,6 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.1.3 (swiftlang-1100.0.282.1 clang-1100.0.33.15)
-// swift-module-flags: -target arm64-apple-ios10.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name AppFriendsCore
+// swift-compiler-version: Apple Swift version 5.5 (swiftlang-1300.0.31.1 clang-1300.0.29.1)
+// swift-module-flags: -target arm64-apple-ios12.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name AppFriendsCore
 import Alamofire
 @_exported import AppFriendsCore
 import Cloudinary
@@ -11,7 +11,8 @@ import SocketIO
 import Swift
 import SwiftyJWT
 import UIKit
-@objc open class HCSDKConstants : ObjectiveC.NSObject {
+import _Concurrency
+@objc @_inheritsConvenienceInitializers open class HCSDKConstants : ObjectiveC.NSObject {
   public static var kUserName: Swift.String
   public static var kUserAvatar: Swift.String
   public static var kUserID: Swift.String
@@ -37,28 +38,28 @@ import UIKit
   case userNotFound = 30001
   case requestIsTooFrequent = 91000
   public func toString() -> Swift.String
-  public typealias RawValue = Swift.Int
   public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
     get
   }
 }
-extension NSError {
+extension Foundation.NSError {
   public static func errorWithAFError(afError: AppFriendsCore.AFError) -> Foundation.NSError
   public static func errorWithAFError(afError: AppFriendsCore.AFError, errorMessage: Swift.String) -> Foundation.NSError
   public static func afError(errorCode code: Swift.Int, errorReason reason: Swift.String?, errorDescription description: Swift.String?) -> Foundation.NSError
 }
-@objc(HCDialog) public class HCDialog : CoreData.NSManagedObject {
+@_inheritsConvenienceInitializers @objc(HCDialog) public class HCDialog : CoreData.NSManagedObject {
   @objc override dynamic public init(entity: CoreData.NSEntityDescription, insertInto context: CoreData.NSManagedObjectContext?)
   @objc deinit
 }
 @objc public protocol AFEncryptionDelegate {
-  @objc func encrypt(texts: [Swift.String], forUser userID: Swift.String, completion: (([Swift.String]?, Swift.Error?) -> Swift.Void)?)
-  @objc func decrypt(encryptedTexts: [Swift.String], forUser userID: Swift.String, completion: (([Swift.String]?, Swift.Error?) -> Swift.Void)?)
-  @objc func encrypt(texts: [Swift.String], forDialog dialogID: Swift.String, completion: (([Swift.String]?, Swift.Error?) -> Swift.Void)?)
-  @objc func decrypt(encryptedTexts: [Swift.String], forDialog dialogID: Swift.String, completion: (([Swift.String]?, Swift.Error?) -> Swift.Void)?)
+  @objc func encrypt(texts: [Swift.String], forUser userID: Swift.String, completion: ((_ encryptedText: [Swift.String]?, _ error: Swift.Error?) -> Swift.Void)?)
+  @objc func decrypt(encryptedTexts: [Swift.String], forUser userID: Swift.String, completion: ((_ decryptedTexts: [Swift.String]?, _ error: Swift.Error?) -> Swift.Void)?)
+  @objc func encrypt(texts: [Swift.String], forDialog dialogID: Swift.String, completion: ((_ encryptedTexts: [Swift.String]?, _ error: Swift.Error?) -> Swift.Void)?)
+  @objc func decrypt(encryptedTexts: [Swift.String], forDialog dialogID: Swift.String, completion: ((_ decryptedTexts: [Swift.String]?, _ error: Swift.Error?) -> Swift.Void)?)
 }
-extension HCSDKCore {
+extension AppFriendsCore.HCSDKCore {
   open func appfriendsHttpHeader() -> [Swift.String : Swift.String]
   open func cookiesForAppFriendsStreaming(url: Foundation.URL) -> [Foundation.HTTPCookie]?
   open func appfriendsRequest(withURL url: Foundation.URL, method: Alamofire.HTTPMethod) -> Foundation.URLRequest?
@@ -73,10 +74,10 @@ extension HCSDKCore {
   open func application(_ application: UIKit.UIApplication, didFinishLaunchingWithOptions launchOptions: [Swift.AnyHashable : Any]?)
   open func application(_ application: UIKit.UIApplication, didReceiveRemoteNotification userInfo: [Swift.AnyHashable : Any]) -> Swift.Bool
 }
-extension HCSDKCore {
+extension AppFriendsCore.HCSDKCore {
   open func postMessageReceipt(tempID messageTempID: Swift.String, dialogID: Swift.String, senderID: Swift.String, receiptStatus: Swift.String)
 }
-extension HCDialog {
+extension AppFriendsCore.HCDialog {
   @nonobjc public class func fetchRequest() -> CoreData.NSFetchRequest<AppFriendsCore.HCDialog>
   @objc @NSManaged dynamic public var customData: Swift.String? {
     @objc get
@@ -107,14 +108,14 @@ extension HCDialog {
     @objc set(value)
   }
 }
-extension HCSDKCore {
-  open func renewSessionForPublicChannel(_ channelID: Swift.String, forceReloadMessage forced: Swift.Bool = false, completion: ((Swift.Bool) -> Swift.Void)? = nil)
-  open func fetchHistoryMessagesFromPublicChannel(_ channelID: Swift.String, fromMessageID messageID: Swift.String, completion: ((Foundation.NSError?, Swift.String?) -> Swift.Void)? = nil)
-  open func joinChannel(channelID cid: Swift.String, completion: ((Foundation.NSError?) -> Swift.Void)? = nil)
-  open func leaveChannel(channelID cid: Swift.String, completion: ((Foundation.NSError?) -> Swift.Void)? = nil)
+extension AppFriendsCore.HCSDKCore {
+  open func renewSessionForPublicChannel(_ channelID: Swift.String, forceReloadMessage forced: Swift.Bool = false, completion: ((_ success: Swift.Bool) -> Swift.Void)? = nil)
+  open func fetchHistoryMessagesFromPublicChannel(_ channelID: Swift.String, fromMessageID messageID: Swift.String, completion: ((_ error: Foundation.NSError?, _ messageID: Swift.String?) -> Swift.Void)? = nil)
+  open func joinChannel(channelID cid: Swift.String, completion: ((_ error: Foundation.NSError?) -> Swift.Void)? = nil)
+  open func leaveChannel(channelID cid: Swift.String, completion: ((_ error: Foundation.NSError?) -> Swift.Void)? = nil)
 }
 @objc public protocol HCSDKCoreSyncDelegate {
-  @objc func messagesReceived(_ messages: [[Swift.String : Swift.AnyObject]], completion: ((Swift.Bool) -> Swift.Void)?)
+  @objc func messagesReceived(_ messages: [[Swift.String : Swift.AnyObject]], completion: ((_ success: Swift.Bool) -> Swift.Void)?)
   @objc func lastReceivedMessageIDInChannel(_ channelID: Swift.String) -> Swift.String?
   @objc func initialSyncingFinished()
   @objc func initialSyncingFailed()
@@ -128,17 +129,17 @@ extension HCSDKCore {
 @objc public protocol HCSDKCoreOnlineUserObserver {
   @objc func onlineUserCountChanged(count: ObjectiveC.NSInteger)
 }
-@objc open class HCSDKCore : ObjectiveC.NSObject {
+@_inheritsConvenienceInitializers @objc open class HCSDKCore : ObjectiveC.NSObject {
   public static var sharedInstance: AppFriendsCore.HCSDKCore
   open var applicationKey: Swift.String {
     get
-    }
+  }
   open var applicationSecret: Swift.String {
     get
-    }
+  }
   open var registeredPush: Swift.Bool {
     get
-    }
+  }
   weak open var syncDelegate: AppFriendsCore.HCSDKCoreSyncDelegate?
   weak open var dialogEventDelegate: AppFriendsCore.HCSDKCoreEventsDelegate?
   weak open var customDataReceiver: AppFriendsCore.HCSDKCoreAppCustomDataDelegate?
@@ -151,29 +152,29 @@ extension HCSDKCore {
   open var staging: Swift.Bool
   weak open var onlineUserObserver: AppFriendsCore.HCSDKCoreOnlineUserObserver?
   open var onlineUsers: [Foundation.NSDictionary]?
-  open var onlineUsersCount: ObjectiveC.NSInteger {
+  open var onlineUsersCount: Swift.Int {
     get
-    set(newValue)
+    set(value)
   }
-  open func initialize(key applicationKey: Swift.String, secret applicationSecret: Swift.String, uiVersion version: Swift.String? = nil, completion: ((Swift.Bool, Foundation.NSError?) -> Swift.Void)? = nil)
+  open func initialize(key applicationKey: Swift.String, secret applicationSecret: Swift.String, uiVersion version: Swift.String? = nil, completion: ((_ success: Swift.Bool, _ error: Foundation.NSError?) -> Swift.Void)? = nil)
   open func authorizationtoken() -> Swift.String?
   open func subscribeToOnlineUsers(_ observer: AppFriendsCore.HCSDKCoreOnlineUserObserver)
   open func unsubscribeToOlineUsers()
   open func enableDebug()
   open func isLoggedIn() -> Swift.Bool
-  open func loginWithUserInfo(_ params: [Swift.String : Swift.AnyObject]?, completion: ((Swift.AnyObject?, Foundation.NSError?) -> Swift.Void)? = nil)
-  open func logout(_ completion: ((Foundation.NSError?) -> Swift.Void)? = nil)
-  open func startRequest(httpMethod method: Swift.String, path requestPath: Swift.String, parameters params: [Swift.String : Swift.AnyObject]?, completion: ((Swift.AnyObject?, Foundation.NSError?) -> Swift.Void)? = nil)
-  open func startRequest(httpMethod method: Swift.String, path requestPath: Swift.String, jsonBody: Swift.AnyObject, completion: ((Swift.AnyObject?, Foundation.NSError?) -> Swift.Void)? = nil)
-  open func registerDeviceForPush(_ userID: Swift.String, pushToken: Swift.String, completion: ((Foundation.NSError?) -> Swift.Void)? = nil)
+  open func loginWithUserInfo(_ params: [Swift.String : Swift.AnyObject]?, completion: ((_ response: Swift.AnyObject?, _ error: Foundation.NSError?) -> Swift.Void)? = nil)
+  open func logout(_ completion: ((_ error: Foundation.NSError?) -> Swift.Void)? = nil)
+  open func startRequest(httpMethod method: Swift.String, path requestPath: Swift.String, parameters params: [Swift.String : Swift.AnyObject]?, completion: ((_ response: Swift.AnyObject?, _ error: Foundation.NSError?) -> Swift.Void)? = nil)
+  open func startRequest(httpMethod method: Swift.String, path requestPath: Swift.String, jsonBody: Swift.AnyObject, completion: ((_ response: Swift.AnyObject?, _ error: Foundation.NSError?) -> Swift.Void)? = nil)
+  open func registerDeviceForPush(_ userID: Swift.String, pushToken: Swift.String, completion: ((_ error: Foundation.NSError?) -> Swift.Void)? = nil)
   open func currentUserID() -> Swift.String?
   open func currentUserName() -> Swift.String?
-  open func updateUserInfo(_ userID: Swift.String, userInfo: [Swift.String : Swift.AnyObject], completion: ((Swift.AnyObject?, Foundation.NSError?) -> Swift.Void)? = nil)
-  open func sendMessage(_ messageJSON: [Swift.String : Swift.AnyObject], dialogID: Swift.String, completion: ((Swift.AnyObject?, Foundation.NSError?) -> Swift.Void)? = nil)
-  open func sendMessage(_ messageJSON: [Swift.String : Swift.AnyObject], userID: Swift.String, completion: ((Swift.AnyObject?, Foundation.NSError?) -> Swift.Void)? = nil)
-  open func sendMessage(_ messageJSON: [Swift.String : Swift.AnyObject], channelID: Swift.String, completion: ((Swift.AnyObject?, Foundation.NSError?) -> Swift.Void)? = nil)
-  open func uploadImage(_ image: UIKit.UIImage, completion: @escaping (Swift.String?, Foundation.NSError?) -> Swift.Void, progress: @escaping (Swift.Int) -> Swift.Void)
-  open func uploadVideo(_ videoData: Foundation.Data, completion: @escaping (Swift.String?, Foundation.NSError?) -> Swift.Void, progress: @escaping (Swift.Int) -> Swift.Void)
+  open func updateUserInfo(_ userID: Swift.String, userInfo: [Swift.String : Swift.AnyObject], completion: ((_ response: Swift.AnyObject?, _ error: Foundation.NSError?) -> Swift.Void)? = nil)
+  open func sendMessage(_ messageJSON: [Swift.String : Swift.AnyObject], dialogID: Swift.String, completion: ((_ response: Swift.AnyObject?, _ error: Foundation.NSError?) -> Swift.Void)? = nil)
+  open func sendMessage(_ messageJSON: [Swift.String : Swift.AnyObject], userID: Swift.String, completion: ((_ response: Swift.AnyObject?, _ error: Foundation.NSError?) -> Swift.Void)? = nil)
+  open func sendMessage(_ messageJSON: [Swift.String : Swift.AnyObject], channelID: Swift.String, completion: ((_ response: Swift.AnyObject?, _ error: Foundation.NSError?) -> Swift.Void)? = nil)
+  open func uploadImage(_ image: UIKit.UIImage, completion: @escaping (_ imagePublicID: Swift.String?, _ error: Foundation.NSError?) -> Swift.Void, progress: @escaping (_ percentage: Swift.Int) -> Swift.Void)
+  open func uploadVideo(_ videoData: Foundation.Data, completion: @escaping (_ imagePublicID: Swift.String?, _ error: Foundation.NSError?) -> Swift.Void, progress: @escaping (_ percentage: Swift.Int) -> Swift.Void)
   @objc override dynamic public init()
   @objc deinit
 }
