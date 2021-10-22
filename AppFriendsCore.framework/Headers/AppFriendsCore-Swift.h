@@ -248,7 +248,7 @@ SWIFT_PROTOCOL("_TtP14AppFriendsCore20AFEncryptionDelegate_")
 - (void)decryptWithEncryptedTexts:(NSArray<NSString *> * _Nonnull)encryptedTexts forDialog:(NSString * _Nonnull)dialogID completion:(void (^ _Nullable)(NSArray<NSString *> * _Nullable, NSError * _Nullable))completion;
 @end
 
-typedef SWIFT_ENUM(NSInteger, AFError, closed) {
+typedef SWIFT_ENUM(NSInteger, AFError, open) {
   AFErrorUnknownError = 90000,
   AFErrorInvalidParams = 90001,
   AFErrorSdkNotInitialized = 90002,
@@ -602,7 +602,7 @@ SWIFT_PROTOCOL("_TtP14AppFriendsCore20AFEncryptionDelegate_")
 - (void)decryptWithEncryptedTexts:(NSArray<NSString *> * _Nonnull)encryptedTexts forDialog:(NSString * _Nonnull)dialogID completion:(void (^ _Nullable)(NSArray<NSString *> * _Nullable, NSError * _Nullable))completion;
 @end
 
-typedef SWIFT_ENUM(NSInteger, AFError, closed) {
+typedef SWIFT_ENUM(NSInteger, AFError, open) {
   AFErrorUnknownError = 90000,
   AFErrorInvalidParams = 90001,
   AFErrorSdkNotInitialized = 90002,
